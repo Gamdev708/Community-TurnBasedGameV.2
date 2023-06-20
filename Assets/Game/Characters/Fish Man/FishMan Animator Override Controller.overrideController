@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FishMan Animator Override Controller
+  m_Controller: {fileID: 9100000, guid: 39973996c8e989e42841041eb2c4120e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 4155ce3b2c74568409a52fc0fac211ab, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2f50e72ca2c70ad4eb571a0b228b67b0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: eb363e140bef7fd4385cc32306ab305c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b5edeb1663ce5ef448783468c766db43, type: 2}
