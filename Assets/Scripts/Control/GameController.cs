@@ -63,7 +63,7 @@ namespace TBRPG.Control
 
         public void ChangeState(IGameState newState)
         {
-            if (_currentState.GetType() != newState.GetType())
+            if (_currentState.GetHashCode() != newState.GetHashCode())
             {
                 // Exit the current state
                 _currentState.Exit(this);
@@ -74,6 +74,7 @@ namespace TBRPG.Control
 
                 _currentState.Enter(this);
             }
+           
         }
 
         public void StartNextTurn()
@@ -82,6 +83,16 @@ namespace TBRPG.Control
             _playerTeam = _playerTeam.Where(x => x.GetComponent<Health>().IsDead() != true).ToList();
             _enemies = _enemies.Where(x => x.GetComponent<Health>().IsDead() != true).ToList();
 
+            if(_playerTeam.Count==0)
+            {
+                Debug.Log("Enemy win");
+                return;
+            }
+            else if (_enemies.Count == 0)
+            {
+                Debug.Log("Player win");
+                return;
+            }
 
             allowInput = false;
             if (_turnQueue.Count != 0 )
@@ -99,6 +110,7 @@ namespace TBRPG.Control
                     ChangeState(new PlayerTurnState(currentCharacter, currentCharacter.position, currentCharacter.rotation, 4));
                     allowInput = true;
                     isturnOver = false;
+                    
                 }
                 else
                 {
@@ -109,7 +121,18 @@ namespace TBRPG.Control
             }
             else
             {
-                SetTurnQueue();
+                _turnQueue.Clear();
+                // Add player team to turn queue
+                foreach (GameObject character in _playerTeam)
+                {
+                    _turnQueue.Enqueue(character.transform);
+                }
+
+                // Add enemies to turn queue
+                foreach (GameObject enemy in _enemies)
+                {
+                    _turnQueue.Enqueue(enemy.transform);
+                }
             }
         }
 
@@ -224,7 +247,7 @@ namespace TBRPG.Control
         {
             foreach (var command in CommandList)
             {
-                Debug.Log(command.ToString());
+                //Debug.Log(command.ToString());
                 switch (command)
                 {
                     case MoveCommand moveCommand:

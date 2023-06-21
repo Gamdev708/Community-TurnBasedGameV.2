@@ -31,7 +31,7 @@ namespace TBRPG.StateMachine
 
         public void Enter(GameController controller)
         {
-            controller.ChangeState(new PlayerTurnState());
+            controller.ChangeState(this);
         }
 
         public void Exit(GameController controller)
@@ -81,13 +81,13 @@ namespace TBRPG.StateMachine
       
         public void Update(GameController controller)
         {
-            if (controller.GetTurnQueue().Count == 0)
-            {
-                controller.SetTurnQueue();
-            }
+            //if (controller.GetTurnQueue().Count == 0)
+            //{
+            //    controller.SetTurnQueue();
+            //}
             if (controller.IsTurnOver())
             {
-                Debug.Log("Next turn");
+                hasCompletedAction=true;
                 controller.StartNextTurn();
             }
 
