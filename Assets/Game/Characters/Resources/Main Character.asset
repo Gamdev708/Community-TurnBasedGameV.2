@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b5526f7bdef0948ae434e5e1dd53de, type: 3}
+  m_Name: Main Character
+  m_EditorClassIdentifier: 
+  itemID: 2decf2f4-406f-4f17-b4cd-1079fd536b36
+  displayName: TM 1
+  description: 
+  icon: {fileID: 21300000, guid: c3c6d2d6f05be3a4b8ab5b3f63f97885, type: 3}
+  pickup: {fileID: 0}
+  stackable: 0
+  price: 0
+  category: 0
+  isunlocked: 0
+  Level: 2
+  AccumilatedExperincePoints: 0
+  PercentageBonus: 10
+  EquippedCharacterPrefab: {fileID: 7370696564174545692, guid: ea856f8617ea1404b8b9e905df539b37,
+    type: 3}
+  CharacterVariant: {fileID: 4276563463945234790, guid: 770c15d6779fcea458d5892c109b854b,
+    type: 3}
+  animatorOveride: {fileID: 0}

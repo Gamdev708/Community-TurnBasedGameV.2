@@ -37,6 +37,7 @@ public class Tags
 {
     public const string GROUND_TAG = "Ground";
     public const string PLAYER_TAG = "Player";
+    public const string PLAYERTEAM_TAG = "Team";
     public const string ENEMY_TAG = "Enemy";
 
     public const string LEFTARM_TAG = "LeftArm";

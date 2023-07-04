@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TBRPG.Control;
 using TBRPG.Saving;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -14,8 +15,8 @@ namespace TBRPG.SceneManagement
         {
             A, B, C, D, E
         }
-
         [SerializeField] int sceneToLoad = -1;
+        [SerializeField] string sceneNameToLoad;
         [SerializeField] Transform spawnPoint;
         [SerializeField] DestinationIdentifier destination;
         [SerializeField] float fadeOutTime = 1f;
@@ -23,9 +24,10 @@ namespace TBRPG.SceneManagement
         [SerializeField] float fadeWaitTime = 0.5f;
 
         private void OnTriggerEnter(Collider other) {
-            if (other.tag == "Player")
+            if (other.tag == Tags.PLAYER_TAG)
             {
                 StartCoroutine(Transition());
+                SceneManager.LoadSceneAsync("Home");
             }
         }
 
@@ -41,7 +43,7 @@ namespace TBRPG.SceneManagement
 
             Fader fader = FindObjectOfType<Fader>();
             SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
-            PlayerController playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            PlayerController playerController = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerController>();
             playerController.enabled = false;
             
             yield return fader.FadeOut(fadeOutTime);
@@ -49,7 +51,7 @@ namespace TBRPG.SceneManagement
             savingWrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
-            PlayerController newPlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+            PlayerController newPlayerController = GameObject.FindWithTag(Tags.PLAYER_TAG).GetComponent<PlayerController>();
             newPlayerController.enabled = false;
 
 
@@ -69,7 +71,7 @@ namespace TBRPG.SceneManagement
 
         private void UpdatePlayer(Portal otherPortal)
         {
-            GameObject player = GameObject.FindWithTag("Player");
+            GameObject player = GameObject.FindWithTag(Tags.PLAYER_TAG);
             player.GetComponent<NavMeshAgent>().enabled = false;
             player.transform.position = otherPortal.spawnPoint.position;
             player.transform.rotation = otherPortal.spawnPoint.rotation;
@@ -87,6 +89,11 @@ namespace TBRPG.SceneManagement
             }
 
             return null;
+        }
+
+        internal void CallSwitchLevelCorutine()
+        {
+            throw new NotImplementedException();
         }
     }
 }

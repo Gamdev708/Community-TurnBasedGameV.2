@@ -10,8 +10,6 @@ namespace TBRPG.Combat
     [CreateAssetMenu(fileName = "Character", menuName = "TBRPG Project/Character", order = 0)]
     public class CharacterConfig : CharacterItem, IModifierProvider
     {
-        [SerializeField] string CharacterDisplayName;
-        [SerializeField] string Description;
         [SerializeField] float PercentageBonus = 10f;
         [SerializeField] Character EquippedCharacterPrefab;
         [SerializeField] GameObject CharacterVariant;

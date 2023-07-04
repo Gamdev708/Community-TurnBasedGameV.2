@@ -40,7 +40,7 @@ namespace TBRPG.Control
         {
             // Initialize player team and enemies
 
-            _playerTeam = GameObject.FindGameObjectsWithTag(Tags.PLAYER_TAG).ToList();
+            _playerTeam = GameObject.FindGameObjectsWithTag(Tags.PLAYERTEAM_TAG).ToList();
             _enemies = GameObject.FindGameObjectsWithTag(Tags.ENEMY_TAG).ToList();
             
             // Set initial turn queue
@@ -198,7 +198,7 @@ namespace TBRPG.Control
 
         public bool IsPlayerRemaining()
         {
-            remainingPlayer = _turnQueue.Where(x => x.tag == Tags.PLAYER_TAG).FirstOrDefault();
+            remainingPlayer = _turnQueue.Where(x => x.tag == Tags.PLAYERTEAM_TAG).FirstOrDefault();
             if (remainingPlayer == null)
             {
                 return false;
