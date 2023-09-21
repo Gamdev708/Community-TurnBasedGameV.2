@@ -12,6 +12,9 @@ namespace TBRPG.Control
 {
     public class GameController : MonoBehaviour
     {
+        [SerializeField] GameObject battleUIManager;
+
+
         private IGameState _currentState;
         private List<GameObject> _playerTeam = new List<GameObject>();
         private List<GameObject> _enemies = new List<GameObject>();
@@ -298,6 +301,11 @@ namespace TBRPG.Control
             this.Target = Target;
             command= Command;
             _currentState.HandleInput(this);
+        }
+
+        public GameObject GetBattleUI()
+        {
+            return battleUIManager;
         }
     }
 }

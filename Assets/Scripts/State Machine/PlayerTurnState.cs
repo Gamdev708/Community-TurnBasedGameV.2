@@ -32,6 +32,9 @@ namespace TBRPG.StateMachine
         public void Enter(GameController controller)
         {
             controller.ChangeState(this);
+            // Load Camera Assigned Character
+            // Load UI
+            // Load
         }
 
         public void Exit(GameController controller)
@@ -75,6 +78,14 @@ namespace TBRPG.StateMachine
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 MeleeAttack(controller);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Heal(controller);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Withdraw(controller);
             }
 
         }

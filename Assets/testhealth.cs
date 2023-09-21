@@ -12,8 +12,8 @@ public class testhealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Players = GameObject.FindGameObjectsWithTag("Player").ToList();
-        Enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+        Players = GameObject.FindGameObjectsWithTag(Tags.PLAYERTEAM_TAG).ToList();
+        Enemies = GameObject.FindGameObjectsWithTag(Tags.ENEMY_TAG).ToList();
     }
 
     // Update is called once per frame
